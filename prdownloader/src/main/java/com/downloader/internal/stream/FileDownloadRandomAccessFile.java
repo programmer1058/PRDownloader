@@ -9,14 +9,19 @@ import java.io.RandomAccessFile;
 
 public class FileDownloadRandomAccessFile implements FileDownloadOutputStream {
 
-    private final BufferedOutputStream out;
+    private final BufferedOutputStream outputStream;
     private final FileDescriptor fd;
     private final RandomAccessFile randomAccess;
 
     private FileDownloadRandomAccessFile(File file) throws IOException {
-        randomAccess = new RandomAccessFile(file, "rw");
-        fd = randomAccess.getFD();
-        out = new BufferedOutputStream(new FileOutputStream(randomAccess.getFD()));
+//         randomAccess = new RandomAccessFile(file, "rw");
+//         fd = randomAccess.getFD();
+//         out = new BufferedOutputStream(new FileOutputStream(randomAccess.getFD()));
+        
+         FileOutputStream fos = new FileOutputStream(file);
+            outputStream = new BufferedOutputStream(fos);
+            FileDescriptor = fos.getFD(); 
+        
     }
 
     @Override
